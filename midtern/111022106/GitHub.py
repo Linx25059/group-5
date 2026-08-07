@@ -7,9 +7,13 @@ class EasyGithubSpider(scrapy.Spider):
 
     custom_settings = {
         'ROBOTSTXT_OBEY': False,           
-        'FEED_FORMAT': 'xml',              
-        'FEED_URI': 'repos.xml',      
-        'FEED_EXPORT_ENCODING': 'utf-8'    
+        'FEEDS': {
+            'repositories.xml': {
+                'format': 'xml',
+                'overwrite': True,  
+                'encoding': 'utf-8'
+            }
+        }
     }
 
     def parse(self, response):
